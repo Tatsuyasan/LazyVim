@@ -12,7 +12,7 @@ local opts = { noremap = true, silent = true }
 ------- ADD custom LazyVim keymaps -------
 
 -- Better comment
-local commentOpts = { desc = "comment line", remap = true }
+local commentOpts = { desc = "Comment line", remap = true }
 keymap("n", "<leader>/", "gcc", commentOpts)
 keymap("v", "<leader>/", "gc", commentOpts)
 
@@ -26,8 +26,6 @@ keymap("n", "<C-a>", "gg<S-v>G", opts)
 -- Better escape - combine escape and no highliting
 keymap({ "n", "v", "i" }, "<C-c>", "<Esc>:noh<return><Esc>", opts)
 
--- keymap("n", "<C-x>", rhs, opts)
-
 -- Move position buffer
 keymap("n", "<M-left>", ":BufferLineMovePrev<cr>", opts)
 keymap("n", "<M-right>", ":BufferLineMoveNext<cr>", opts)
@@ -40,3 +38,7 @@ keymap("n", "<s-tab>", ":tabprev<Return>", opts)
 -- Split window
 keymap("n", "ss", ":split<Return>", opts)
 keymap("n", "sv", ":vsplit<Return>", opts)
+
+keymap("n", "gR", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { desc = "Rename with word under cursor", expr = true })

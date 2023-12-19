@@ -11,7 +11,8 @@ return {
       },
     },
     keys = {
-      { "<leader>/", vim.NIL },
+      { "<leader>/", false },
+      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       {
         "<leader>fp",
         function()
